@@ -14,7 +14,7 @@ export const AllTags = () => {
 				? <div className={"my-5 mx-10 w-1/2"}>
 					<div className={'my-10'}>
 				<span className={"text-2xl flex-none font-bold uppercase text-center text-white"}>
-					Choose tags for sorted:
+					Select tags to sort:
 				</span>
 					</div>
 					{tags.map(t => <Tag key={t} tag={t}/>)}
