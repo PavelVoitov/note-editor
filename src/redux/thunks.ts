@@ -20,7 +20,7 @@ export const loadNotesFromDB = createAsyncThunk('notes/loadNotes', async () => {
 	return executeDBOperation(async () => {}, {})
 })
 
-export const addNoteToDB = createAsyncThunk('notes/addNoteToDB', async (note: Omit<NoteType, 'id'>) => {
+export const addNoteToDB = createAsyncThunk('notes/addNoteToDB', async (note: NoteType) => {
 	return executeDBOperation(async (store) => {
 		await addTableEntry({ objectStore: store, entry: note })
 	}, {})

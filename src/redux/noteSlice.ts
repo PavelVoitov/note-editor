@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {addNoteToDB, deleteNoteFromDB, editNoteInDB, loadNotesFromDB} from "./thunks";
 
 export type NoteType = {
-	id?: string
+	id: string
 	note: string
 	tags: string[]
 }

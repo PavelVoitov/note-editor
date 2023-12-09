@@ -32,7 +32,7 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 	const addTaskHandler = async () => {
 		if (title.trim() !== '') {
 			try {
-				await dispatch(addNoteToDB({note: title.trim(), tags}))
+				await dispatch(addNoteToDB({id: String(new Date), note: title.trim(), tags}))
 				setTitle('')
 			} catch (e: any) {
 				console.error(e)

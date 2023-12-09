@@ -1,17 +1,15 @@
-import {openDB, DBSchema, IDBPObjectStore} from 'idb';
+import {DBSchema, IDBPObjectStore, openDB} from 'idb';
 import {NoteType} from "redux/noteSlice";
-import {toast} from "react-toastify";
 
 interface NoteDBSchema extends DBSchema {
 	'notes': {
 		key: string;
 		value: {
-			id?: string;
+			id: string;
 			note: string;
 			tags: string[];
-		};
-		indexes: { 'tags': string[] };
-	};
+		}
+	}
 }
 
 const dbName = 'noteDB';
@@ -19,13 +17,12 @@ const storeName = 'notes';
 
 export const dbPromise = openDB<NoteDBSchema>(dbName, 1, {
 	upgrade(db) {
-		const notesStore = db.createObjectStore(storeName, { autoIncrement: true });
-		notesStore.createIndex('tags', 'tags', { multiEntry: true });
+		db.createObjectStore(storeName, { autoIncrement: true });
 	},
 })
 
-export const addTableEntry = async ({ objectStore, entry}: { objectStore:  IDBPObjectStore<NoteDBSchema, ["notes"], "notes", "readwrite">, entry: Omit<NoteType, 'id'>})  => {
-	await objectStore.add(entry);
+export const addTableEntry = async ({ objectStore, entry}: { objectStore:  IDBPObjectStore<NoteDBSchema, ["notes"], "notes", "readwrite">, entry: NoteType})  => {
+	await objectStore.add(entry, entry.id);
 }
 
 export const deleteEntryTable = async ({objectStore, entry}: { objectStore: IDBPObjectStore<NoteDBSchema, ["notes"], "notes", "readwrite">, entry: string }) => {
@@ -37,16 +34,5 @@ export const getAllTableEntries = async <T>(objectStore: any) => {
 }
 
 export const editTableEntry = async ({ objectStore, entry }: { objectStore: IDBPObjectStore<NoteDBSchema, ["notes"], "notes", "readwrite">, entry: NoteType }) => {
-	try {
-		const hasInlineKey = 'id' in entry;
-		if (hasInlineKey) {
-			await objectStore.put(entry);
-		} else {
-			await objectStore.put(entry, entry.id);
-		}
-		return getAllTableEntries(objectStore);
-	} catch (error) {
-		toast.error(`Error editing table entry: ${error}`);
-		throw error;
-	}
-};
+	await objectStore.put(entry, entry.id)
+}
