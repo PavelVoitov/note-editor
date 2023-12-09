@@ -8,6 +8,7 @@ import ReactContentEditable from "react-contenteditable";
 import {highlighted, tagRegex} from "utils/highlighted";
 import {useRefCallback} from "utils/wrappedContentEditable";
 import {toast} from "react-toastify";
+import {formatDate} from "utils/formatDate";
 
 
 type AddItemFormPropsType = {
@@ -32,7 +33,8 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 	const addTaskHandler = async () => {
 		if (title.trim() !== '') {
 			try {
-				await dispatch(addNoteToDB({id: String(new Date), note: title.trim(), tags}))
+				const dateAsId = formatDate(new Date)
+				await dispatch(addNoteToDB({id: dateAsId, note: title.trim(), tags}))
 				setTitle('')
 			} catch (e: any) {
 				console.error(e)
