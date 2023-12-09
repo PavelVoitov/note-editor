@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ReactContentEditable from "react-contenteditable";
-import {useRefCallback} from "components/EditableSpan/Wrapped-content-editable";
+import {useRefCallback} from "utils/wrappedContentEditable";
 import {highlighted, tagRegex} from "utils/highlighted";
 
 
@@ -10,7 +10,7 @@ type EditableSpanPropsType = {
 	addTags: (tags: string[]) => void
 }
 
-export const CustomEdit = React.memo(({note, changeNote, addTags}: EditableSpanPropsType) => {
+export const CustomEditableComponent = React.memo(({note, changeNote, addTags}: EditableSpanPropsType) => {
 	const [editMode, setEditMode] = useState<boolean>(true)
 	const [title, setTitle] = useState<string>(note)
 
@@ -18,17 +18,17 @@ export const CustomEdit = React.memo(({note, changeNote, addTags}: EditableSpanP
 		setEditMode(false)
 	}
 
-	const offEditMode = () => {
+	const offEditMode = useRefCallback(() => {
 		setEditMode(true)
 		changeNote(title)
-	}
+	}, [title])
 
 	const EnterChangeTitle = useRefCallback((e) => {
 		console.log(title)
 		if (e.key === 'Enter') {
 			offEditMode()
 		}
-	}, [])
+	}, [title])
 
 	const handleChange = useRefCallback((e) => {
 		const textWithoutTags = e.target.value.replace(/<[^>]+>/g, '')
@@ -49,7 +49,8 @@ export const CustomEdit = React.memo(({note, changeNote, addTags}: EditableSpanP
 					onClick={onEditMode}
 					onBlur={offEditMode}
 					onKeyDown={EnterChangeTitle}
-					className="cursor-pointer"
+					inputMode={'text'}
+					className="cursor-pointer break-words"
 				 />
 	)
 })
