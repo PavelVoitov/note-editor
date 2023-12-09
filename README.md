@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# Note Editor App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a single-page application (SPA) built with React.js that serves as a text editor for notes with tags.
 
-## Available Scripts
+## Functionality
 
-In the project directory, you can run:
+1. **Create, Edit, and Delete Notes:**
+    - Users can create new notes, edit existing ones, and delete notes.
 
-### `npm start`
+2. **View List of Notes:**
+    - Users can see a list of all notes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. **Tag Creation:**
+    - During note creation or editing, users can create tags using the '#' symbol.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. **Tag Highlighting:**
+    - When editing a note, words corresponding to tags are highlighted.
+    - Tags will be created and displayed in a list below the text input field.
 
-### `npm test`
+5. **Filter Notes by Tag:**
+    - Users can filter notes by selecting one or more tags, showing only the notes with the chosen tags.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6. **Persistent Storage:**
+    - Notes are stored in IndexedDB, ensuring persistence across page reloads.
 
-### `npm run build`
+## Technologies used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **React.js:**
+    - React.js with hooks.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Typescript:**
+   - The application is implemented using TypeScript.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **UI Library:**
+    - Material UI library for styles and components.
 
-### `npm run eject`
+4. **Status Management:**
+    - Redux toolkit.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. **Version control:**
+   - Public Git repository for version control.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. **Deployment:**
+   - The application is deployed on GitHub pages.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How to Run the App
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/PavelVoitov/note-editor.git
+   ```
 
-## Learn More
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd react-notes-app
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Run the Application:**
+   ```bash
+   npm start
+   ```
+   The app will be accessible at http://localhost:3000.
+
+## Deployment
+
+The app is deployed on gh-pages, and you can access it [here](https://pavelvoitov.github.io/note-editor/).
+
+## Contact Information
+
+If you have any questions or need further assistance, feel free to reach out to me at [voitovpavelpost@gmail.com](mailto:voitovpavelpost@gmail.com).
+
+**Best regards,  
+Pavel Voitov**
