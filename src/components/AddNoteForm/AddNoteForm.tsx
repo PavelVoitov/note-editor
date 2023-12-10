@@ -26,7 +26,6 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 		setTitle(textWithoutHtmlTags)
 		const extractedTags = Array.from(textWithoutHtmlTags.matchAll(tagRegex), (match: string) => match[0])
 		const uniqueTags = Array.from(new Set(extractedTags))
-		console.log(uniqueTags)
 		setTags(uniqueTags)
 	}, [])
 
