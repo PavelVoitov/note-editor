@@ -45,7 +45,6 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 	}
 
 	const EnterAddTitle = useRefCallback(async (e) => {
-		debugger
 		if (e.key === "Enter") {
 			await addTaskHandler()
 		}
