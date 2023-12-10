@@ -36,8 +36,8 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 				const dateAsId = formatDate(new Date)
 				await dispatch(addNoteToDB({id: dateAsId, note: title.trim(), tags}))
 				setTitle('')
-			} catch (e: any) {
-				console.error(e)
+			} catch (e) {
+				toast.error(`Error: ${e}`)
 			}
 		} else {
 			toast.error('Can\'t add empty note!')
@@ -45,8 +45,9 @@ export const AddNoteForm = React.memo(({disabled = false}: AddItemFormPropsType)
 	}
 
 	const EnterAddTitle = useRefCallback(async (e) => {
+		debugger
 		if (e.key === "Enter") {
-			await addTaskHandler
+			await addTaskHandler()
 		}
 	}, [title])
 

@@ -6,7 +6,7 @@ import {Tag} from "components/Tag/Tag";
 import {NoteType} from "../../../redux/noteSlice";
 import {useDispatch} from "react-redux";
 import {DeleteButton} from "components/DeleteButton/DeleteButton";
-import {CustomEditableComponent} from "components/EditableSpan/CustomEditableComponent";
+import {CustomEditableComponent} from "components/CustomEditableComponent/CustomEditableComponent";
 import {deleteNoteFromDB, editNoteInDB} from "../../../redux/thunks";
 import {AppDispatch} from "redux/store";
 
