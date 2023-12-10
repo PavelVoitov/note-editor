@@ -24,7 +24,6 @@ export const CustomEditableComponent = React.memo(({note, changeNote, addTags}: 
 	}, [title])
 
 	const EnterChangeTitle = useRefCallback((e) => {
-		console.log(title)
 		if (e.key === 'Enter') {
 			offEditMode()
 		}
